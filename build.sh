@@ -5,6 +5,11 @@ module add ci
 module add jdk/${JAVA_VERSION}
 SOURCE_FILE=${NAME}-${VERSION}.zip
 
+IFS='.' read -r -a array <<< "$VERSION"
+VERSION_MAJOR=${array[0]}
+VERSION_MINOR=${array[1]}
+
+
 echo "REPO_DIR is "
 echo $REPO_DIR
 echo "SRC_DIR is "
@@ -23,7 +28,7 @@ mkdir -p ${SOFT_DIR}
 if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ] ; then
   touch  ${SRC_DIR}/${SOURCE_FILE}.lock
   echo "seems like this is the first build - let's geet the source"
-  wget http://downloads.sourceforge.net/project/${NAME}/${NAME}-${VERSION}/${VERSION/}${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
+  wget http://sourceforge.net/projects/${NAME}/files/${NAME}-${VERSION_MAJOR}/${VERSION}/${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
