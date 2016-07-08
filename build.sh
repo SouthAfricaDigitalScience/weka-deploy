@@ -44,4 +44,6 @@ else
 fi
 
 unzip  -n -u ${SRC_DIR}/${SOURCE_FILE} -d ${WORKSPACE}
+cd ${NAME}-${YA_VERSION}
+jar xf weka-src.jar
 ant compile
