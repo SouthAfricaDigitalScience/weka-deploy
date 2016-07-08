@@ -2,6 +2,7 @@
 . /etc/profile.d/modules.sh
 module load ci
 module add jdk/${JAVA_VERSION}
+cd ${NAME}-${YA_VERSION}
 echo "running junit"
 ant junit
 
