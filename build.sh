@@ -30,7 +30,7 @@ if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ]
   touch  ${SRC_DIR}/${SOURCE_FILE}.lock
   echo "seems like this is the first build - let's geet the source"
 #  wget http://tenet.dl.sourceforge.net/project/weka/weka-3-8/3.8.0/weka-3-8-0.zip
-  http://sourceforge.net/projects/${NAME}/files/${NAME}-${VERSION_MAJOR}.${VERSION_MINOR}/${VERSION}/${SOURCE_FILE}/download -O ${SRC_DIR}/${SOURCE_FILE}
+  wget http://sourceforge.net/projects/${NAME}/files/${NAME}-${VERSION_MAJOR}.${VERSION_MINOR}/${VERSION}/${SOURCE_FILE}/download -O ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
