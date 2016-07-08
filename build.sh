@@ -3,12 +3,13 @@
 
 module add ci
 module add jdk/${JAVA_VERSION}
-SOURCE_FILE=${NAME}-${VERSION}.zip
 
 IFS='.' read -r -a array <<< "$VERSION"
 VERSION_MAJOR=${array[0]}
 VERSION_MINOR=${array[1]}
-
+# Way to go, Weka dudes, you can't stick to a naming scheme
+YA_VERSION=$(echo $VERSION | sed  s#\\.#-#g)
+SOURCE_FILE=${NAME}-${YA_VERSION}.zip
 
 echo "REPO_DIR is "
 echo $REPO_DIR
@@ -28,7 +29,8 @@ mkdir -p ${SOFT_DIR}
 if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ] ; then
   touch  ${SRC_DIR}/${SOURCE_FILE}.lock
   echo "seems like this is the first build - let's geet the source"
-  wget http://sourceforge.net/projects/${NAME}/files/${NAME}-${VERSION_MAJOR}.${VERSION_MINOR}/${VERSION}/${SOURCE_FILE}/download -O ${SRC_DIR}/${SOURCE_FILE}
+#  wget http://tenet.dl.sourceforge.net/project/weka/weka-3-8/3.8.0/weka-3-8-0.zip
+  http://sourceforge.net/projects/${NAME}/files/${NAME}-${VERSION_MAJOR}.${VERSION_MINOR}/${VERSION}/${SOURCE_FILE}/download -O ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
