@@ -2,6 +2,13 @@
 . /etc/profile.d/modules.sh
 module load ci
 module add jdk/${JAVA_VERSION}
+
+IFS='.' read -r -a array <<< "$VERSION"
+VERSION_MAJOR=${array[0]}
+VERSION_MINOR=${array[1]}
+# Way to go, Weka dudes, you can't stick to a naming scheme
+YA_VERSION=$(echo $VERSION | sed  s#\\.#-#g)
+
 cd ${NAME}-${YA_VERSION}
 echo "running junit"
 ant junit
