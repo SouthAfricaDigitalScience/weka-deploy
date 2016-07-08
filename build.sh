@@ -43,5 +43,5 @@ else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
 
-unzip ${SRC_DIR}/${SOURCE_FILE} -d ${WORKSPACE}
+unzip  -n -u ${SRC_DIR}/${SOURCE_FILE} -d ${WORKSPACE}
 ant compile
