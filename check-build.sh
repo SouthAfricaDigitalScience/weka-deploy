@@ -10,8 +10,8 @@ VERSION_MINOR=${array[1]}
 YA_VERSION=$(echo $VERSION | sed  s#\\.#-#g)
 
 cd ${NAME}-${YA_VERSION}
-echo "running junit"
-ant junit
+#echo "running junit"
+#ant junit
 
 echo "running tests"
 ant run_tests_all
