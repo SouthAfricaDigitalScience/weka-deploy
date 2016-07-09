@@ -47,3 +47,7 @@ unzip  -n -u ${SRC_DIR}/${SOURCE_FILE} -d ${WORKSPACE}
 cd ${NAME}-${YA_VERSION}
 jar xf weka-src.jar
 ant compile
+
+# install packages
+java -cp weka.jar weka.core.WekaPackageManager -install-package hotSpot
+java -cp weka.jar weka.core.WekaPackageManager -install-package netlibNativeLinux
