@@ -13,8 +13,9 @@ cd ${NAME}-${YA_VERSION}
 #echo "running junit"
 #ant junit
 
-echo "running tests"
-ant run_tests_all
+
+echo "running core tests"
+ant run_tests_core
 
 echo "running release"
 ant release

@@ -48,6 +48,12 @@ cd ${NAME}-${YA_VERSION}
 jar xf weka-src.jar
 ant compile
 
+find . -name "weka.jar"
 # install packages
+echo "Installing packages"
+
 java -cp weka.jar weka.core.WekaPackageManager -install-package hotSpot
 java -cp weka.jar weka.core.WekaPackageManager -install-package netlibNativeLinux
+
+echo "compiling tests"
+ant compile_tests
