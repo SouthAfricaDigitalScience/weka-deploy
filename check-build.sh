@@ -17,9 +17,6 @@ cd ${NAME}-${YA_VERSION}
 echo "running core tests"
 ant run_tests_core
 
-echo "running release"
-ant release
-
 echo "building jar"
 ant exejar
 
