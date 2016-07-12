@@ -27,7 +27,7 @@ setenv WEKA_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)
 prepend-path CLASSPATH         $::env(WEKA_DIR)
 prepend-path PATH
 MODULE_FILE
-) > modules/$VERSION
+) > ${LIBRARIES_MODULES}/${NAME}/$VERSION
 
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
 cp modules/$VERSION ${LIBRARIES_MODULES}/${NAME}
